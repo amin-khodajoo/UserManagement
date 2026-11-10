@@ -16,6 +16,14 @@ public class UserRepository : IUserRepository
     }
     #endregion
 
+    #region [ Delete ]
+    public async Task Delete(User user)
+    {
+        _context.Users.Remove(user);
+        await _context.SaveChangesAsync();
+    }
+    #endregion
+
     #region [ Create ]
     public async Task CreateAsync(User user)
     {

@@ -17,6 +17,19 @@ public class UsersController : ControllerBase
     }
     #endregion
 
+    #region [ Delete ]
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> Delete([FromBody]int id)
+    {
+        await _userService.Delete(id);
+
+        return Ok(new
+        {
+            message = "User deleted successfully."
+        });
+    }
+    #endregion
+
     #region [ Post ]
     [HttpPost]
     public async Task<ActionResult> Post([FromBody] UserDto user)

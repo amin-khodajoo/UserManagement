@@ -16,6 +16,19 @@ public class UserService : IUserService
     }
     #endregion
 
+    #region [ Delete ]
+    public async Task Delete(int id)
+    {
+        var user = await _userRepository.GetByIdAsync(id);
+
+        if (user == null)
+        {
+            throw new Exception("User not found");
+        }
+        await _userRepository.Delete(user);
+    }
+    #endregion
+
     #region [ Create ]
     public async Task CreateAsync(UserDto user)
     {
