@@ -16,6 +16,14 @@ public class UserRepository : IUserRepository
     }
     #endregion
 
+    #region [ Create ]
+    public async Task CreateAsync(User user)
+    {
+        await _context.Users.AddAsync(user);
+        await _context.SaveChangesAsync();
+    }
+    #endregion
+
     #region [ GetAll ]
     public async Task<List<User>> GetAllAsync()
     {

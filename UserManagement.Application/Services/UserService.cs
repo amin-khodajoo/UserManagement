@@ -1,6 +1,7 @@
 ﻿
 using UserManagement.Application.DTOs;
 using UserManagement.Application.Interfaces;
+using UserManagement.Domain.Entities;
 
 namespace UserManagement.Application.Services;
 
@@ -12,6 +13,18 @@ public class UserService : IUserService
     public UserService(IUserRepository userRepository)
     {
         _userRepository = userRepository;
+    }
+    #endregion
+
+    #region [ Create ]
+    public async Task CreateAsync(UserDto user)
+    {
+        var newUser = new User
+        {
+            FirstName = user.FirstName,
+            LastName = user.LastName
+        };
+        await _userRepository.CreateAsync(newUser);
     }
     #endregion
 

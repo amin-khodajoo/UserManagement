@@ -17,6 +17,16 @@ public class UsersController : ControllerBase
     }
     #endregion
 
+    #region [ Post ]
+    [HttpPost]
+    public async Task<ActionResult> Post([FromBody] UserDto user)
+    {
+        await _userService.CreateAsync(user);
+
+        return Ok(user);
+    }
+    #endregion
+
     #region [ GetAll ]
     [HttpGet]
     public async Task<ActionResult<List<UserDto>>> GetAll()
