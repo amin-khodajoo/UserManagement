@@ -1,4 +1,5 @@
-﻿using UserManagement.Domain.Entities;
+﻿using UserManagement.Application.DTOs;
+using UserManagement.Domain.Entities;
 
 namespace UserManagement.Application.Interfaces;
 
@@ -9,5 +10,6 @@ public interface IUserRepository
     Task CreateAsync(User user);
     Task Delete(User user);
     Task Put(User user);
+    Task Patch(User user);
 }
 

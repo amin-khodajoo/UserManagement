@@ -16,6 +16,27 @@ public class UserService : IUserService
     }
     #endregion
 
+    #region [ Patch ]
+    public async Task Patch(int id, PatchUserDto userDto)
+    {
+        var user = await _userRepository.GetByIdAsync(id);
+
+        if (user == null)
+        {
+            throw new Exception("User not found");
+        }
+
+        if (userDto.FirstName != null)
+            user.FirstName = userDto.FirstName;
+
+        if (userDto.LastName != null)
+            user.LastName = userDto.LastName;
+
+
+        await _userRepository.Patch(user);
+    }
+    #endregion
+
     #region [ Put ]
     public async Task Put(UserDto userDto)
     {

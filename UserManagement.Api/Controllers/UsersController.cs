@@ -17,6 +17,16 @@ public class UsersController : ControllerBase
     }
     #endregion
 
+    #region [ Patch ]
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> Patch(int id, PatchUserDto userDto)
+    {
+        await _userService.Patch(id, userDto);
+
+        return Ok("User updated successfully");
+    }
+    #endregion
+
     #region [ Put ]
     [HttpPut]
     public async Task<ActionResult> Put([FromBody] UserDto userDto)

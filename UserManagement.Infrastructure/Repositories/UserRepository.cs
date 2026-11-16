@@ -16,6 +16,13 @@ public class UserRepository : IUserRepository
     }
     #endregion
 
+    #region [ Patch ]
+   public async Task Patch(User user)
+    {
+        _context.SaveChanges();
+    }
+    #endregion
+
     #region [ PUT ]
     public async Task Put(User user)
     {
