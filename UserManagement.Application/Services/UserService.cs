@@ -16,6 +16,20 @@ public class UserService : IUserService
     }
     #endregion
 
+    #region [ Put ]
+    public async Task Put(UserDto userDto)
+    {
+        var existingUser = await _userRepository.GetByIdAsync(userDto.Id);
+        if (existingUser == null)
+        {
+            throw new Exception("User not found");
+        }
+        existingUser.FirstName = userDto.FirstName;
+        existingUser.LastName = userDto.LastName;
+        await _userRepository.Put(existingUser);
+    }
+    #endregion
+
     #region [ Delete ]
     public async Task Delete(int id)
     {
